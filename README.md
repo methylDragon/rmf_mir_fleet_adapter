@@ -100,6 +100,10 @@ The transform objects are stored in the robot command handle's `self.transforms`
 
 ### Very Involved: Location Tracking
 
+> **Note**: You do **not** need to know this if you just want to use this package to control robots. This is here to help any developers that want to look into the source code's guts to understand why the code is written the way it is (and why there seem to be weird variables strewn about.)
+>
+> This will be helpful if you intend on writing other fleet adapters for other robots that communicate with REST APIs.
+
 In order for the appropriate `RobotUpdateHandle.update_position()` method calls to be used, we need some way to track the location of the robot on the `rmf_core` navigation graph.
 
 The trouble is, since we are using the MiR REST API, the only way we can obtain information about the robot's state is by polling it via REST calls.
