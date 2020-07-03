@@ -346,6 +346,10 @@ class MiRCommandHandle(adpt.RobotCommandHandle):
                     continue
 
                 if not self.paused:  # Skipped if paused
+                    # Prevent spinning out of control
+                    if next_mission_wait <= 0:
+                        next_mission_wait = 0.1
+
                     self._path_quit_cv.acquire()
                     self._path_quit_cv.wait(next_mission_wait)
                     self._path_quit_cv.release()
